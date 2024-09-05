@@ -28,7 +28,8 @@
   "manifest": {
     "host_permissions": [
       "https://staging.kalodata.com/*",
-      "https://kalodata.com/*"
+      "https://kalodata.com/*",
+      "https://www.kalodata.com/*"
     ],
     "permissions": [
       "webRequest",

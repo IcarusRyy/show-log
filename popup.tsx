@@ -31,7 +31,13 @@ function IndexPopup() {
       chrome.webRequest.onBeforeRequest.addListener(
         handleRequest,
         // { urls: ["<all_urls>"] },
-        { urls: ["https://staging.kalodata.com/api/log"] },
+        {
+          urls: [
+            "https://staging.kalodata.com/api/log",
+            "https://kalodata.com/api/log",
+            "https://www.kalodata.com/api/log"
+          ]
+        },
         ["requestBody"]
       )
     } else {
@@ -48,7 +54,6 @@ function IndexPopup() {
     if (details.url.includes("/api/log")) {
       const rawData = details.requestBody.raw[0].bytes
       const data = JSON.parse(new TextDecoder().decode(rawData))
-
       data.forEach((item) => {
         const { kalo_event_name, kalo_pos, kalo_type, kalo_value } = item
         if (!cachedRequests[kalo_event_name]) {
